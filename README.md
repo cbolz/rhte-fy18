@@ -1,6 +1,6 @@
 # README
 
-This content was presented in two labs at the EMEA Red Hat Partner Conference 2017 in Frankfurt am Main.
+This content was presented in a lab at the EMEA Red Hat Technical Exchange 2017 in Port Aventura.
 
 There are two labs available:
 
