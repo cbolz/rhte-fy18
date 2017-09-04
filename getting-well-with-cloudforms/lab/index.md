@@ -61,6 +61,8 @@
         - [Create a Service Catalog Item for the Playbook](#create-a-service-catalog-item-for-the-playbook-1)
     - [Creating Control Action](#creating-control-action)
     - [Create VM Control Policy](#create-vm-control-policy)
+    - [Setting Event Assignment](#setting-event-assignment)
+    - [Setting Control Action on Event](#setting-control-action-on-event)
 - [Advanced labs](#advanced-labs)
     - [Use the Self Service user Interface](#use-the-self-service-user-interface)
     - [Use role Based Access Control to publish Service Catalog](#use-role-based-access-control-to-publish-service-catalog)
@@ -1654,6 +1656,37 @@ Next we will create the Policy to call the action. The use case that will be dem
 
 ![control-policies](img/control-policies.png)
 
+2. Select Configuration/Add a New VM and Instance Control policy
+
+![add-new-control-policy](img/add-new-control-policy.png)
+
+3. In the form you just need to provide the ***Description*** 
+
+***Description*** Reset VM for CPU and Memory
+
+![add-new-control-policy-form](img/add-new-control-policy-form.png)
+
+## Setting Event Assignment
+
+1. Once added click Configuration/Edit this Events Assignment
+
+![edit-event-asignments](img/edit-event-asignments.png)
+
+2. Scroll down and select “VM Settings Change” under the VM Configuration
+
+![vm-settings-change](img/vm-settings-change.png)
+
+3. Click Save
+
+## Setting Control Action on Event
+
+1. Click on the Event that is now save to the policy
+
+![event](img/event.png)
+
+2. Select Configuration/Edit Actions for the Policy Event
+
+
 # Advanced labs
 
 If you were able to complete all the steps and still have some time left, here are a couple of things you can do to get more familiar with CloudForms.
@@ -1664,7 +1697,7 @@ The user interface we used so far is often referenced as the "Operations UI" or 
 
 The Self Service user Interface can be accessed by appending the string "self_service" to the Appliance URL.
 
-[https://cf-lu&lt;number&gt;.labs.rhepds.com/self_service](https://cf-lu&lt;number&gt;.labs.rhepds.com/self_service)
+[https://cf-lu&lt;number&gt;.labs.rhepds.com/ui/service](https://cf-lu&lt;number&gt;.labs.rhepds.com/ui/service)
 
 You can login with the same credentials as before.
 
