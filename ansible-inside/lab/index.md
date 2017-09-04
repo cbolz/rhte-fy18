@@ -44,12 +44,6 @@ The lab is comprised of a number of systems:
 
         User: admin@internal / password: r3dh4t1!
 
-* Red Hat OpenStack Platform
-
-        URL: https://osp-lu<number>.labs.rhepds.com
-
-        User: admin / password: r3dh4t1!
-
 * VMware vCenter
 
         URL: https://vcenter-lu<number>.labs.rhepds.com
@@ -90,26 +84,6 @@ Before we start,  we want to make sure the embedded Ansible role is enabled and 
 
     ![ansible worker started](img/ansible-worker-started.png)
 
-### OpenStack Provider status
-
-Let's now check the OpenStack Provider:
-
-1. Navigate to ***Compute*** -> ***Clouds*** -> ***Providers***
-
-    ![navigate to cloud providers](img/navigate-to-compute-clouds-providers.png)
-
-1. You should see a tile icon labeled "OpenStack". Click on it.
-
-    ![OpenStack provider tile icon](img/openstack-provider-tile.png)
-
-1. Click on ***Authentication*** -> ***Re-check Authentication Status***
-
-    ![re-check authentication](img/openstack-recheck-authentication.png)
-
-This will validate the credentials are correct, and it will also restart the provider specific background processes.
-
-After reloading the page, the provider tile should show a green check mark and the last update fields should report "less than a minute ago".
-
 ### Red Hat Virtualization Provider status
 
 Let's then check the RHV Provider:
@@ -118,9 +92,9 @@ Let's then check the RHV Provider:
 
     ![navigate to cloud providers](img/navigate-to-compute-infrastructure-providers.png)
 
-1. You should see a tile icon labeled "OpenStack". Click on it.
+1. You should see a tile icon labeled "RHEV". Click on it.
 
-    ![OpenStack provider tile icon](img/rhv-provider-tile.png)
+    ![RHEV provider tile icon](img/rhv-provider-tile.png)
 
 1. Click on ***Authentication*** -> ***Re-check Authentication Status***
 
@@ -138,7 +112,7 @@ Last but not least, let's check the vCenter Provider:
 
 1. You should see a tile icon labeled "vCenter". Click on it.
 
-    ![OpenStack provider tile icon](img/vcenter-provider-tile.png)
+    ![vCenter provider tile icon](img/vcenter-provider-tile.png)
 
 1. Click on ***Authentication*** -> ***Re-check Authentication Status***
 
