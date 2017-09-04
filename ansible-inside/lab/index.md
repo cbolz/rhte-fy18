@@ -172,7 +172,7 @@ To be able to run Ansible Playbooks, they have to become available in CloudForms
 
     ***Description:*** Example Playbooks
 
-    ***URL:*** [https://github.com/cbolz/partner-conference-2017-labs.git](https://github.com/cbolz/partner-conference-2017-labs.git)
+    ***URL:*** [https://github.com/cbolz/rhte-fy18/tree/master/playbooks](https://github.com/cbolz/rhte-fy18/tree/master/playbooks.git)
 
     ***SCM Update Options:*** check "Update on Launch"
 
@@ -208,7 +208,7 @@ For one of the following labs, the Playbook needs to be able to log into the vCe
 
 1. Click ***Add*** to save the credentials
 
-***Note:*** It takes a few seconds for the action to complete. A pop up notification will inform you after the task was completed. You can track the progress in the Tasks section. 
+***Note:*** It takes a few seconds for the action to complete. A pop up notification will inform you after the task was completed. You can track the progress in the Tasks section.
 
 In the top right corner of the screen navigate to ***Administrator*** -> ***Tasks***
 

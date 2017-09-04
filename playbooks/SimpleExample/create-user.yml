@@ -1,10 +1,8 @@
-# John Hardy
-# FisherPrice example - Create user "fisherprice" and memberof "EvmGroup-users" in CloudForms.
 ---
 - hosts: localhost
 
   vars:
-    create_user_name: 'fisherprice'
+    create_user_name: 'example1'
     create_user_password: 'secret'
     groups_url: "{{ manageiq.api_url }}/api/groups?expand=resources&attributes=description,href,id&filter[]=description='EvmGroup-user'"
     user_url: "{{ manageiq.api_url }}/api/users"
@@ -44,3 +42,6 @@
       register: token_output
 
     - debug: var=token_output.json
+
+
+ 

@@ -1,0 +1,148 @@
+---
+- hosts: all
+  gather_facts: false
+  connection: local
+
+  vars:
+    provider_id: "99000000000014"
+    max_retries: 9
+    retry_interval: 20
+
+  tasks:
+    - debug: var=vcenter_hostname
+    - debug: var=esxi_host
+    - debug: var=datacenter
+    - debug: var=template
+    - debug: var=manageiq.api_url
+    - debug: var=manageiq.api_token
+    - debug: var=manageiq.service
+
+    - name: Set the Provider URL
+      set_fact:
+        provider_url: "{{ manageiq.api_url }}/api/providers/{{ provider_id }}"
+
+    - name: Set the Service URL
+      set_fact:
+        svc_url: "/api/{{ manageiq.service }}"
+
+    - debug: var=svc_url 
+
+    # Create a VM from a template
+    - name: create the VM
+      vmware_guest:
+        hostname: "{{ vcenter_hostname }}"
+        username: administrator@vsphere.local
+        password: vmware
+        validate_certs: no
+        esxi_hostname: "{{ esxi_host }}"
+        datacenter: "{{ datacenter }}"
+        folder: Discovered virtual machine
+        name: "{{ inventory_hostname }}"
+        state: poweredon
+        disk:
+        - size_gb: 10
+          type: thin
+        hardware:
+          memory_mb: 512
+          num_cpus: 1
+          scsi: paravirtual
+        template: "{{ template }}"
+        wait_for_ip_address: no
+      delegate_to: localhost
+      register: deploy
+
+    - name: Gather the facts for the VM
+      vsphere_guest:
+        validate_certs: no
+        vcenter_hostname: "{{ vcenter_hostname }}"
+        guest: "{{ inventory_hostname }}"
+        vmware_guest_facts: yes
+      register: new_vm
+
+    - debug: var=new_vm    
+
+    - set_fact: new_vm_uuid="{{ new_vm.ansible_facts.hw_product_uuid }}"
+
+    - debug: var=new_vm_uuid
+
+    - name: Refresh provider in CloudForms
+      uri:
+        url: "{{ provider_url }}"
+        method: POST
+        body:
+          action: refresh
+        body_format: json
+        validate_certs: False
+        headers:
+          X-Auth-Token: "{{ manageiq.api_token }}"
+          Content-Type: "application/json" 
+        status_code: 200
+      register: output
+    - debug: var=output
+    - name: set the task href
+      set_fact:
+        task_url: "{{ output.json.task_href}}"
+    - debug: var=task_url
+
+    - name: Wait for the refresh to end
+      uri:
+        url: "{{ task_url }}"
+        method: GET
+        validate_certs: False
+        headers:
+          X-Auth-Token: "{{ manageiq.api_token }}"
+          Content-Type: "application/json" 
+        status_code: 200
+      register: task_result
+      until: task_result.json.state == 'Finished' or task_result.json.status == 'Error'
+      failed_when: task_result.json.status == 'Error'
+      retries: "{{max_retries}}"
+      delay: "{{retry_interval}}"
+    - debug: var=task_result
+    
+    - set_fact: find_vm_url="{{ manageiq.api_url }}/api/vms?expand=resources&attributes=href,uid_ems&filter[]=uid_ems='{{ new_vm_uuid }}'"
+
+    - debug: var=find_vm_url
+
+    - name: Call to CloudForms to find href for new_vm_uuid
+      uri:
+        url: "{{ find_vm_url }}"
+        method: GET
+        validate_certs: no
+        headers:
+           X-Auth-Token: "{{ manageiq.api_token }}"
+           Content-Type: "application/json"
+        body_format: json
+        return_content: yes
+      register: token_output
+
+    - debug: var=token_output
+
+    - set_fact: cf_vm_href="{{ token_output.json.resources[0].href }}"
+
+    - debug: var=cf_vm_href
+
+    - name: Create an array of vms
+      set_fact:
+        vms: "{{ vms|default([]) + [ { 'href': svc_url, 'resource':  { 'href': item } } ] }}"
+      with_items:
+        - "{{ cf_vm_href }}"
+
+    - debug: var=vms
+    
+    - name: Register vm with the service
+      uri:
+        url: "{{ manageiq.api_url }}/api/services"
+        method: POST
+        body_format: json
+        body:
+          action: add_resource
+          resources : "{{ vms }}"
+        validate_certs: False
+        headers:
+          X-Auth-Token: "{{ manageiq.api_token }}"
+          Content-Type: "application/json"
+        status_code: 200
+      register: output
+
+    - debug: var=output.json.results[0].success
