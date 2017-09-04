@@ -15,6 +15,7 @@
     - [Add a Git repository of Ansible Playbooks](#add-a-git-repository-of-ansible-playbooks)
     - [Add vCenter credentials](#add-vcenter-credentials)
     - [Verify repository sync](#verify-repository-sync)
+    - [Install pysphere](#install-pysphere)
 - [CloudForms 4.5 with Ansible batteries included](#cloudforms-45-with-ansible-batteries-included)
     - [Build a Service Catalog to create and delete users](#build-a-service-catalog-to-create-and-delete-users)
         - [Create a Service Catalog for Ansible Playbooks](#create-a-service-catalog-for-ansible-playbooks)
@@ -55,6 +56,11 @@
         - [Build a HEAT Service Catalog Item](#build-a-heat-service-catalog-item)
         - [Order the HEAT Wordpress Catalog Item](#order-the-heat-wordpress-catalog-item)
         - [Verify provisioning in OpenStack](#verify-provisioning-in-openstack)
+- [Policies and Ansible](#policies-and-ansible)
+    - [Creating the Service](#creating-the-service)
+        - [Create a Service Catalog Item for the Playbook](#create-a-service-catalog-item-for-the-playbook-1)
+    - [Creating Control Action](#creating-control-action)
+    - [Create VM Control Policy](#create-vm-control-policy)
 - [Advanced labs](#advanced-labs)
     - [Use the Self Service user Interface](#use-the-self-service-user-interface)
     - [Use role Based Access Control to publish Service Catalog](#use-role-based-access-control-to-publish-service-catalog)
@@ -302,6 +308,14 @@ In the meantime the repository you created should have completed the initial syn
     ![list of available Playbooks](img/list-pf-playbooks.png)
 
 If there are no Playbooks listed, check the repository was configured correctly. Click the notification icon on the top right (the little bell icon) and check if there are any errors listed. The initial import can also take a minute or two, did you wait long enough?
+
+## Install pysphere
+
+In order to use the Ansible VMware modules you need to install a python library call "pysphere". You need to ssh to you student workstation and jump to the CloudForms server.
+
+`
+$ sudo easy_install -U pysphere
+`
 
 # CloudForms 4.5 with Ansible batteries included
 
@@ -802,7 +816,7 @@ To complete this lab, you will need to deploy an test environment. Each student 
 
     ![order the lab](img/order-lab.png)
 
-1. Read the details. 
+1. Read the details.
 
     ***Note:*** Each lab will be automatically deleted after one day and shut down after 8 hours
 
@@ -1533,7 +1547,112 @@ Let's log into OpenStack to see what's happening there.
 
     ![stack details](img/osp-stack-details.png)
 
-This concludes this lab.
+This concludes this section of the lab.
+
+# Policies and Ansible
+
+In this lab we will cover how to create an action in CoudForms that executes an Ansible Playbook. 
+
+## Creating the Service
+
+Control Policies drive Control Actions. Ansible Playbooks can now be executed as a control action, this is done by the control action calling a service. Therefore we need to create a service for the action to call.
+
+First we need to create a Catalog to store the service in, do this by clicking Services/Catalogs and create new by clicking Configuration button and selecting Add New Catalog.
+
+### Create a Service Catalog Item for the Playbook
+
+1. Click on ***Catalog Items*** in the accordion on the left
+
+    ![navigate to service catalog items](img/add-catalog-item.png)
+
+1. Click on ***Configuration*** -> ***Add a New Catalog Item***
+
+1. Select ***Ansible Playbook*** as "Catalog Item Type"
+
+    ![add catalog item ansible Playbook](img/add-catalog-item-ansible-playbook.png)
+
+    ***Note:*** Do not select Ansible Tower! We do not use Ansible Tower in this lab, but the embedded Ansible role of CloudForms.
+
+1. Fill out the form to define the service catalog item:
+
+    ***Name:*** VM reset for CPU and Memory
+
+    ***Description:*** Reconfigure VMware VM for CPU and Memory
+
+    ***Display in Catalog:*** No (uncheck the box)
+
+    ***Catalog:*** Ansible
+
+    ***Repository:*** Github
+
+    ***Playbook:*** vmware_reconfigure_vm.yml
+
+    ***Machine Credentials:*** CFME Default Credentials
+
+    ***Cloud Type*** VMware
+
+    ***Cloud Credential*** vCenter
+
+    In the box ***Variables & Default Values*** we can enter the variables the Playbook requires:
+
+    ***Variable:*** vcenter_server
+
+    ***Default:*** vcenter.example.com
+
+    Click on the little plus icon (+) to save the variable. Repeat the process for the second variable:
+
+    ***Variable:*** guest_server
+
+    ***Default:*** \<TBD>
+
+    Click on the little plus icon (+) to save the variable.
+
+    ***Dialog:*** create new
+
+    ***Dialog name:*** vm_reconfig
+
+![vm-reconfig-service](img/vm-reconfig-service.png)
+
+## Creating Control Action
+
+1. Navigate to ***Control*** -> ***Explorer*** and click on the ***Actions*** accordion
+
+![control-explorer](img/control-explorer.png)
+
+2. Click on the ***Actions*** accordion
+
+![actions](img/actions.png)
+
+3. Select Configuration/Add a new Action
+
+![add-new-action](img/add-new-action.png)
+
+4. Fill out the form as follows
+
+***Description*** Reset VM for CPU and Memory
+
+***Action Type*** Run Ansible Playbook
+
+***Playbook Catalog Item*** VM reset for Memory and CPU
+
+***Inventory*** Localhost
+
+Leave the inventory on “Localhost” this is because the playbook that is run as part of the service you created is to be ran on the CloudForms appliance. The other options are
+
+- Run the playbook in the service on the machine that raises the event.
+- Comma Delimited list of Hosts.
+
+![create-action-form](img/create-action-form.png)
+
+5. Click Add
+
+Next we will create the Policy to call the action. The use case that will be demonstrated is when a VM changes its hardware settings, CloudForms will change it back.
+
+## Create VM Control Policy
+
+1. Navigate to ***Policies** and then select ***VM Control Policies***
+
+![control-policies](img/control-policies.png)
 
 # Advanced labs
 
