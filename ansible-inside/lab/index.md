@@ -64,7 +64,7 @@ The number &lt;number&gt; matches the number of your lab notebook.
 
 Today, every business is a digital business. Technology is your innovation engine, and delivering your applications faster helps you win. Historically, that required a lot of manual effort and complicated coordination. But today, there is Ansible - the simple, yet powerful IT automation engine that thousands of companies are using to drive complexity out of their environments and accelerate DevOps initiatives.
 
-Red Hat CloudForms can integrate with IaaS, PaaS, public and private cloud and configuration management providers. Since version 4.2 of CloudForms, it can also integrate with Ansible Tower by Red Hat. The latest version which is 4.5, has a new "embedded Ansible" role which allows it to run Playbooks, manage credentials and retrieve Playbooks from a source control management like git. 
+Red Hat CloudForms can integrate with IaaS, PaaS, public and private cloud and configuration management providers. Since version 4.2 of CloudForms, it can also integrate with Ansible Tower by Red Hat. The latest version which is 4.5, has a new "embedded Ansible" role which allows it to run Playbooks, manage credentials and retrieve Playbooks from a source control management like git.
 
 This integration allows customers to build service catalogs from Ansible Playbooks to allow end users to easily browse, order and manage resources from Ansible. Ansible Playbooks can be used in Control Policies which can not only detect problems, but also automatically fix them.
 
@@ -130,7 +130,7 @@ This will validate the credentials are correct, and it will also restart the pro
 
 ### vCenter Provider status
 
-Last but not leat, let's check the vCenter Provider:
+Last but not least, let's check the vCenter Provider:
 
 1. Navigate to ***Compute*** -> ***Infrastructure*** -> ***Providers***
 
@@ -146,7 +146,7 @@ Last but not leat, let's check the vCenter Provider:
 
 This will validate the credentials are correct, and it will also restart the provider specific background processes.
 
-1. Go back to ***Compute*** -> ***Infrastructure*** -> ***Providers*** 
+1. Go back to ***Compute*** -> ***Infrastructure*** -> ***Providers***
 
     ![navigate to infrastructure providers](img/navigate-to-compute-infrastructure-providers.png)
 
@@ -208,7 +208,15 @@ For one of the following labs, the Playbook needs to be able to log into the vCe
 
 1. Click ***Add*** to save the credentials
 
-***Note:*** It takes a few seconds for the action to complete. A pop up notification will inform you after the task was completed.
+***Note:*** It takes a few seconds for the action to complete. A pop up notification will inform you after the task was completed. You can track the progress in the Tasks section. 
+
+In the top right corner of the screen navigate to ***Administrator*** -> ***Tasks***
+
+![tasks](img/tasks.png)
+
+And click in ***All Other Tasks***
+
+![All-Other-Taks](img/all-other-tasks.png)
 
 ## Verify repository sync
 
@@ -486,7 +494,7 @@ In this second part of the lab we want to use an Ansible Playbook to deploy a Vi
 
 ## Order the Virtual Machine Provisioning Service Catalog Item
 
-Once more, we want to test the result and see everything works as expected. 
+Once more, we want to test the result and see everything works as expected.
 
 1. Navigate to ***Services*** -> ***Catalogs***
 
@@ -637,7 +645,7 @@ The Service Dialog we created so far, is not ideal for most use cases. We want u
 
     ![make datacenter invisible](img/datacenter-visibility.png)
 
-1. To finish the our optimizations, we want to make the vCenter a dynamic drop down. Instead of providing possible values as a hard coded list, or asking the user for manual input, we can use program code to create a list of applicable options. 
+1. To finish the our optimizations, we want to make the vCenter a dynamic drop down. Instead of providing possible values as a hard coded list, or asking the user for manual input, we can use program code to create a list of applicable options.
 
     In this example, we want the list of available vCenters dynamically populated (Although there is still only one vCenter and the value is questionable at best. But it's a good example of CloudForms' capabilities nonetheless)
 

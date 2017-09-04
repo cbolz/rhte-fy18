@@ -8,5 +8,4 @@ There are three labs available:
 
 [Build a Service Catalog with CloudForms](./cloudforms-service-catalog/)
 
-[Create an Policy that executed an Ansible Playbook] (./cloudforms-ansible-action)
-
+[Create an Policy that executed an Ansible Playbook](./cloudforms-ansible-action)

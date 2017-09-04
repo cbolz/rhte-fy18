@@ -1,0 +1,46 @@
+# John Hardy
+# FisherPrice example - Create user "fisherprice" and memberof "EvmGroup-users" in CloudForms.
+---
+- hosts: localhost
+
+  vars:
+    create_user_name: 'fisherprice'
+    create_user_password: 'secret'
+    groups_url: "{{ manageiq.api_url }}/api/groups?expand=resources&attributes=description,href,id&filter[]=description='EvmGroup-user'"
+    user_url: "{{ manageiq.api_url }}/api/users"
+
+  tasks:
+    - name: Call to CloudForms to find href for EvmGroup-user
+      uri:
+        url: "{{ groups_url }}"
+        method: GET
+        validate_certs: no
+        headers:
+           X-Auth-Token: "{{ manageiq.api_token }}"
+           Content-Type: "application/json"
+        body_format: json
+        return_content: yes
+      register: token_output
+
+    - set_fact: group_id="{{ token_output.json.resources[0].id }}"
+
+    - name: Call to CloudForms to create the user "Fisherprice"
+      uri:
+        url: "{{ user_url }}"
+        method: POST
+        validate_certs: no
+        headers:
+           X-Auth-Token: "{{ manageiq.api_token }}"
+           Content-Type: "application/json"
+        HEADER_Content-Type: "application/json"
+        body_format: json
+        body: 
+          userid: '{{ create_user_name }}'
+          password: '{{ create_user_password }}'
+          name: '{{ create_user_name }}'
+          group: 
+             id: '{{ group_id }}'
+        return_content: yes
+      register: token_output
+
+    - debug: var=token_output.json

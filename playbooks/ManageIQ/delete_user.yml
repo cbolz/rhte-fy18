@@ -1,0 +1,45 @@
+# John Hardy
+# FisherPrice example - Delete user "fisherprice" in CloudForms.
+---
+
+- hosts: localhost
+
+  vars:
+    user_url: "{{ manageiq.api_url }}/api/users?expand=resources&attributes=name,href,id&filter[]=name='fisherprice'"
+
+  tasks:
+    - debug: var=manageiq.api_url
+    - debug: var=manageiq.api_token
+    - debug: var=manageiq.service
+    - debug: var=manageiq.event_target
+    - name: Call to CloudForms to find href for user fisherprice
+      uri:
+        url: "{{ user_url }}"
+        method: GET
+        validate_certs: no
+        headers:
+           X-Auth-Token: "{{ manageiq.api_token }}"
+           Content-Type: "application/json"
+        body_format: json
+        return_content: yes
+      register: token_output
+
+    - set_fact: user_href="{{ token_output.json.resources[0].href }}"
+
+    - name: Call to CloudForms to delete the user fisherprice by href
+      uri:
+        url: "{{ user_href }}"
+        method: POST
+        validate_certs: no
+        headers:
+           X-Auth-Token: "{{ manageiq.api_token }}"
+           Content-Type: "application/json"
+        HEADER_Content-Type: "application/json"
+        body_format: json
+        body: 
+          action: 'delete'
+        return_content: yes
+      register: token_output
+
+    - debug: var=token_output.json
+    

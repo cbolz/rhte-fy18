@@ -1,5 +1,5 @@
-# Build a service catalog with CloudForms
+# Build a policy action based on an Ansible Playbook with CloudForms
 
-User self-service is seen as one of the defining capabilities of cloud computing. Red Hat CloudForms provides a self-service portal and catalog to deploy IT services over a variety of virtualization and cloud providers. In this lab you will get an introduction to CloudForms self-service followed by hands-on examples. You will start by creating a service catalog item to deploy a VM and then move on to more advanced topics like orchestration templates (Azure ARM or AWS CloudFormation) as services.
+Policies are one of the most important features of CloudForms. In Cloudforms 4.5 you can execute an Ansible Playbook as a result of a Policy. In this lab you will learn how to Create new actions based on Ansible Playbooks, assign those actions to a Policy, trigger the policy and verify that it was correctly executed.
 
 [Full lab](./lab/index.md)
