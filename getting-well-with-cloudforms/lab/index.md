@@ -63,6 +63,7 @@
     - [Create VM Control Policy](#create-vm-control-policy)
     - [Setting Event Assignment](#setting-event-assignment)
     - [Setting Control Action on Event](#setting-control-action-on-event)
+    - [Creating and Assigning Policy Profile](#creating-and-assigning-policy-profile)
 - [Advanced labs](#advanced-labs)
     - [Use the Self Service user Interface](#use-the-self-service-user-interface)
     - [Use role Based Access Control to publish Service Catalog](#use-role-based-access-control-to-publish-service-catalog)
@@ -1686,6 +1687,27 @@ Next we will create the Policy to call the action. The use case that will be dem
 
 2. Select Configuration/Edit Actions for the Policy Event
 
+![edit-actions](img/edit-actions.png)
+
+3. Scroll the Available Actions For Conditions that are TRUE and move the Action you just created to the Selected Actions
+
+![actions-for-conditions](img/actions-for-conditions.png)
+
+4. Click Save
+
+The policy will react to events that are “VM Settings Change”, upon the event detected it will run the action “Reconfigure VMware VM for CPU and Memory” that is in turn a Service that is a Ansible Playbook.
+
+## Creating and Assigning Policy Profile
+
+For a policy to work, it needs a policy profile to be attached to. The policy profile also needs to be assigned to an object in CloudForms.
+
+1. Navigate to ***Control*** -> ***Explorer*** -> ***Policy Profiles***
+
+![navigate-policy-profiles](img/navigate-policy-profiles.png)
+
+2. Click Configuration/Add New Policy Profile
+
+
 
 # Advanced labs
 
@@ -1901,11 +1923,11 @@ We want to do another test and see if the user Joe Doe can now see and other the
 
 If you're already done and still have some time left, here are some ideas for advanced labs:
 
-* try to retire the "create user" service catalog item and see if the user is indeed deleted
-* try to add other Playbooks, some examples can be found on the [Official Red Hat CloudForms Blog](http://cloudformsblog.redhat.com/2017/05/31/ansible-automation-inside-cloudforms/)
-* retire the virtual machine Service you ordered earlier, check what happens during retirement with the virtual machine (Is it shutdown? Deleted? Is there still a representation in the CloudForms Web UI?)
-* make the second Catalog Item available for Joe Doe as well
-* improve the Service Dialog and make the VM Name a mandatory field (right now, it's optional and can be left empty)
-* grant Joe Doe more privileges (for example, it would be nice if he could start and stop hie virtual machines)
-* upload items to make the Service Catalog more appealing
-* use the new Self Service user Interface by trying the "/self_service" URL on your Appliance
+- try to retire the "create user" service catalog item and see if the user is indeed deleted
+- try to add other Playbooks, some examples can be found on the [Official Red Hat CloudForms Blog](http://cloudformsblog.redhat.com/2017/05/31/ansible-automation-inside-cloudforms/)
+- retire the virtual machine Service you ordered earlier, check what happens during retirement with the virtual machine (Is it shutdown? Deleted? Is there still a representation in the CloudForms Web UI?)
+- make the second Catalog Item available for Joe Doe as well
+- improve the Service Dialog and make the VM Name a mandatory field (right now, it's optional and can be left empty)
+- grant Joe Doe more privileges (for example, it would be nice if he could start and stop hie virtual machines)
+- upload items to make the Service Catalog more appealing
+- use the new Self Service user Interface by trying the "/self_service" URL on your Appliance
