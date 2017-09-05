@@ -64,6 +64,8 @@
     - [Setting Event Assignment](#setting-event-assignment)
     - [Setting Control Action on Event](#setting-control-action-on-event)
     - [Creating and Assigning Policy Profile](#creating-and-assigning-policy-profile)
+    - [Assign the policy profile](#assign-the-policy-profile)
+    - [Testing the Policy Profile](#testing-the-policy-profile)
 - [Advanced labs](#advanced-labs)
     - [Use the Self Service user Interface](#use-the-self-service-user-interface)
     - [Use role Based Access Control to publish Service Catalog](#use-role-based-access-control-to-publish-service-catalog)
@@ -1707,7 +1709,65 @@ For a policy to work, it needs a policy profile to be attached to. The policy pr
 
 2. Click Configuration/Add New Policy Profile
 
+![add-new-policy-profile](img/add-new-policy-profile.png)
 
+3. Provide a ***Description***
+
+***Description*** Desired State Policies
+
+4. Move the “Reset VM for CPU and Memory” policy from available to Profile Policies list.
+
+![move-policy](img/move-policy.png)
+
+5. Click Save
+
+## Assign the policy profile
+
+1. Navigate to ***Compute*** -> ***Infrastructure*** -> ***Virtual Machines***
+
+![navigate-compute-infrastructure-vms](img/navigate-compute-infrastructure-vms.png)
+
+2. Select a Power Off VM
+
+3. Go to ***Policy*** -> ***Manage Policies***
+
+![assign-policy-vm](img/assign-policy-vm.png)
+
+4. Select the “Desired State Policy Profile”
+
+![assign-policy-vm2](img/assign-policy-vm2.png)
+
+5. Click Save
+
+This has assigned the Desired State Policy Profile to the individual VM. When the VM is configured for CPU or Memory, CloudForms will reset it back to 1CPU and 1GB memory.
+
+## Testing the Policy Profile
+
+ We will see the output in CloudForms in the form of a service in my services as well as the actual VM inventory will change. To see more real time, it's advised during testing to open the policy.log file on the CloudForms appliance. This shows when events are caught by CloudForms and confirms the policy matches. 
+
+Start by going to vSphere Web Client and selecting the VM that you identified for your service and policy earlier.
+
+1. Go to the vCenter console, pick the VM you assigned the Policy and modify the CPU and Memory values to
+
+***CPU*** 3
+
+***Memory*** 4096 MB
+
+![vmware-edit-settings](img/vmware-edit-settings.png)
+
+You can see the vSphere Web Client task running to change the CPU and Memory.
+
+2. Go back to the CloudForms console and navigate to ***Services*** -> ***Requests***
+
+![navigate-to-services-requests](img/navigate-to-services-requests.png)
+
+3. Wait until your request (service) is finished
+
+![policy-service](img/policy-service.png)
+
+4. Go back to the vCenter console and verify that is has 1 CPU and 1 GB of RAM
+
+![verify-vmware-vm](img/verify-vmware-vm.png)
 
 # Advanced labs
 
