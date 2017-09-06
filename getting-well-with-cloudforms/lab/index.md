@@ -142,35 +142,7 @@ The number &lt;number&gt; matches the number of your lab notebook.
 
 ***Note:*** Your browser might give you a warning message about the used SSL Certificates. These warning messages can be accepted and are due to the fact that each lab deployed with new certificates on request.
 
-## Introduction to Ansible
-
-Today, every business is a digital business. Technology is your innovation engine, and delivering your applications faster helps you win. Historically, that required a lot of manual effort and complicated coordination. But today, there is Ansible - the simple, yet powerful IT automation engine that thousands of companies are using to drive complexity out of their environments and accelerate DevOps initiatives.
-
-Red Hat CloudForms can integrate with IaaS, PaaS, public and private cloud and configuration management providers. Since version 4.2 of CloudForms, it can also integrate with Ansible Tower by Red Hat. The latest version which is 4.5, has a new "embedded Ansible" role which allows it to run Playbooks, manage credentials and retrieve Playbooks from a source control management like git.
-
-This integration allows customers to build service catalogs from Ansible Playbooks to allow end users to easily browse, order and manage resources from Ansible. Ansible Playbooks can be used in Control Policies which can not only detect problems, but also automatically fix them.
-
 ## Verify Lab
-
-### Make sure embedded Ansible role is enabled and running
-
-Before we start,  we want to make sure the embedded Ansible role is enabled and running.
-
-1. Log into your CloudForms Appliance
-
-1. Click on your user name on the top right and click on ***Configuration***
-
-    ![navigate to configuration](img/navigate-to-configuration.png)
-
-1. Make sure the "Embedded Ansible" Role is enabled
-
-    ![ansible role enabled](img/ansible-role-enabled.png)
-
-1. Click on ***Diagnostics*** in the accordion on the left and click on the ***Workers*** tab
-
-1. Make sure you can see a line indicating the "Embedded Ansible Worker" is in state "started"
-
-    ![ansible worker started](img/ansible-worker-started.png)
 
 ### OpenStack Provider status
 
@@ -237,6 +209,34 @@ This will validate the credentials are correct, and it will also restart the pro
     ![all providers healthy](img/all-providers-green.png)
 
 1. Now you're ready to go!
+
+## Introduction to Ansible
+
+Today, every business is a digital business. Technology is your innovation engine, and delivering your applications faster helps you win. Historically, that required a lot of manual effort and complicated coordination. But today, there is Ansible - the simple, yet powerful IT automation engine that thousands of companies are using to drive complexity out of their environments and accelerate DevOps initiatives.
+
+Red Hat CloudForms can integrate with IaaS, PaaS, public and private cloud and configuration management providers. Since version 4.2 of CloudForms, it can also integrate with Ansible Tower by Red Hat. The latest version which is 4.5, has a new "embedded Ansible" role which allows it to run Playbooks, manage credentials and retrieve Playbooks from a source control management like git.
+
+This integration allows customers to build service catalogs from Ansible Playbooks to allow end users to easily browse, order and manage resources from Ansible. Ansible Playbooks can be used in Control Policies which can not only detect problems, but also automatically fix them.
+
+### Make sure embedded Ansible role is enabled and running
+
+Before we start,  we want to make sure the embedded Ansible role is enabled and running.
+
+1. Log into your CloudForms Appliance
+
+1. Click on your user name on the top right and click on ***Configuration***
+
+    ![navigate to configuration](img/navigate-to-configuration.png)
+
+1. Make sure the "Embedded Ansible" Role is enabled
+
+    ![ansible role enabled](img/ansible-role-enabled.png)
+
+1. Click on ***Diagnostics*** in the accordion on the left and click on the ***Workers*** tab
+
+1. Make sure you can see a line indicating the "Embedded Ansible Worker" is in state "started"
+
+    ![ansible worker started](img/ansible-worker-started.png)
 
 ## Add a Git repository of Ansible Playbooks
 
