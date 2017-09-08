@@ -4,7 +4,6 @@
 
 - [Lab Introduction](#lab-introduction)
     - [Introduction to CloudForms](#introduction-to-cloudforms)
-    - [Setup the lab environment](#setup-the-lab-environment)
         - [Access the lab environment](#access-the-lab-environment)
     - [Verify Lab](#verify-lab)
         - [OpenStack Provider status](#openstack-provider-status)
@@ -81,26 +80,6 @@
 ## Introduction to CloudForms
 
 [General introduction](../../common/index.md)
-
-## Setup the lab environment
-
-To complete this lab, you will need to deploy an environment. Each student has their dedicated environment. To order a lab, navigate to [http://cfme.rhepds.com](http://cfme.rhepds.com).
-
-1. Log in to with your station name lu&lt;number&gt; with password "Frank_&lt;number&gt;_furt". The number &lt;number&gt; matches the number of your lab notebook.
-
-    ![navigate to service catalog](img/navigate-to-service-catalog-rhepds.png)
-
-1. click on the lab "CloudForms 4.5 with Ansible" and on ***Order***
-
-    ![order ansible lab](img/order-ansible-lab.png)
-
-1. read the details. Note that each lab will be automatically deleted after one day and shut down after 8 hours
-
-1. click on ***Submit*** to start the provisioning of the lab
-
-    ***Note*** It will take up to 15 minutes for the lab to deploy! If you get a "Service unavailable" error, just wait a minute and try to reload.
-
-    ***Note:*** You can only deploy one lab at a given time! If you try to deploy another lab, any previously created labs will be deleted!
 
 ### Access the lab environment
 
