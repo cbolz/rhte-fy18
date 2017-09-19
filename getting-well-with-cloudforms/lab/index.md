@@ -83,35 +83,43 @@
 
 ### Access the lab environment
 
+Navigate to the RHPDS Portal and order the "EMEA RHTE CF Lab".
+
+        URL: https://rhpds.redhat.com
+
 ***Note:*** Give the lab up to 15 minutes to complete provisioning!
+
+You will receive an email with the list of all virtual machines which have been deployed as part of the lab. 
 
 The lab is comprised of a number of systems:
 
-* Red Hat CloudForms Management Engine
+- Red Hat CloudForms Management Engine
 
-        URL: https://cf-lu<number>.labs.rhepds.com
+        URL: https://cf-<GUID>.rhpds.opentlc.com
 
         User: demo / password: r3dh4t1!
 
-* Red Hat Enterprise Virtualization Manager
+- Red Hat Enterprise Virtualization Manager
 
-        URL: https://rhevm-lu<number>.labs.rhepds.com
+        URL: https://rhevm-<GUID>.rhpds.opentlc.com
 
         User: admin@internal / password: r3dh4t1!
 
-* Red Hat OpenStack Platform
+- Red Hat OpenStack Platform
 
-        URL: https://osp-lu<number>.labs.rhepds.com
+        URL: https://osp-<GUID>.rhpds.opentlc.com
 
         User: admin / password: r3dh4t1!
 
-* VMware vCenter
+    ***Note:*** IF you don't use HTTPS when connecting to OpenStack Horizon, you will only see the Default Apache Welcome Page (no automatic redirect). Make sure you use HTTPS to access Horizon.
 
-        URL: https://vcenter-lu<number>.labs.rhepds.com
+- VMware vCenter
+
+        URL: https://vcenter-<GUID>.rhpds.opentlc.com
 
         User: root / password: r3dh4t1!
 
-The number &lt;number&gt; matches the number of your lab notebook.
+The ID &lt;GUID&gt; is unique to your lab environment.
 
 ***Note:*** Your browser might give you a warning message about the used SSL Certificates. These warning messages can be accepted and are due to the fact that each lab deployed with new certificates on request.
 
@@ -119,7 +127,7 @@ The number &lt;number&gt; matches the number of your lab notebook.
 
 ### OpenStack Provider status
 
-Let's now check the OpenStack Provider:
+Let's first check the OpenStack Provider:
 
 1. Navigate to ***Compute*** -> ***Clouds*** -> ***Providers***
 
