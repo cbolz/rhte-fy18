@@ -85,7 +85,16 @@
 
 Navigate to the RHPDS Portal and order the "EMEA RHTE CF Lab".
 
-        URL: https://rhpds.redhat.com
+[https://rhpds.redhat.com](https://rhpds.redhat.com)
+
+If you've never used RHPDS before, make sure you follow the [Lab Environment Access Instructions](https://mojo.redhat.com/docs/DOC-1133834). In particular, request an account on the [OPENTLC Account Management Request Access](https://account.opentlc.com/account/requestAccessForm.php) page. If you only forgot your password, follow the instructions on the [OPENTLC Account Management](https://account.opentlc.com/account/) page.
+
+After you logged in, navigate to ***Services*** -> ***Catalogs***. Open the "EMEA RHTE" Catalog.
+
+![EMEA RHTE Catalog](img/emea-rhte-catalog.png) 
+Click on the "EMEA RHTE CF Lab" and click on ***Order*** to start deployment. 
+
+![Order CF Lab](img/order-rhte-lab.png)
 
 ***Note:*** Give the lab up to 15 minutes to complete provisioning!
 
