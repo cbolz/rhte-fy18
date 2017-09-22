@@ -901,7 +901,7 @@ To be able to run Ansible Playbooks, they have to become available in CloudForms
 
     ***Description:*** Example Playbooks
 
-    ***URL:*** [https://github.com/cbolz/rhte-fy18/tree/master/playbooks](https://github.com/cbolz/rhte-fy18/tree/master/playbooks.git)
+    ***URL:*** [https://github.com/cbolz/rhte-fy18.git](https://github.com/cbolz/rhte-fy18.git)
 
     ***SCM Update Options:*** check "Update on Launch"
 
