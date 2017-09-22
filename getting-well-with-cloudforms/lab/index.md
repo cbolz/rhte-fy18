@@ -1,4 +1,4 @@
-#
+# Lab Introduction
 
 <!-- TOC -->
 
@@ -14,7 +14,7 @@
         - [Service Basics](#service-basics)
     - [Virtual Machine Provisioning example](#virtual-machine-provisioning-example)
         - [Build a Service Dialog](#build-a-service-dialog)
-        - [Build a Virtual Machine Service Catalog](#build-a-virtual-machine-service-catalog)
+        - [Build a Service Catalog](#build-a-service-catalog)
         - [Build a Virtual Machine Service Catalog Item](#build-a-virtual-machine-service-catalog-item)
         - [Order the Simple Virtual Machine Service Catalog Item](#order-the-simple-virtual-machine-service-catalog-item)
         - [Verify order](#verify-order)
@@ -75,8 +75,6 @@
 
 <!-- /TOC -->
 
-# Lab Introduction
-
 ## Introduction to CloudForms
 
 [General introduction](../../common/index.md)
@@ -92,6 +90,7 @@ If you've never used RHPDS before, make sure you follow the [Lab Environment Acc
 After you logged in, navigate to ***Services*** -> ***Catalogs***. Open the "EMEA RHTE" Catalog.
 
 ![EMEA RHTE Catalog](img/emea-rhte-catalog.png) 
+
 Click on the "EMEA RHTE CF Lab" and click on ***Order*** to start deployment. 
 
 ![Order CF Lab](img/order-rhte-lab.png)
@@ -208,26 +207,28 @@ This lab will guide you through the process of creating a service catalog in Clo
 
 One of the features a Cloud Management Platform provides, is a self service user interface. Here users can order, manage and retire services. Services are categorized in catalogs, where they can be organized and easily consumed.
 
-By providing a service catalog, users can deploy the services they need quickly and simple. This will improve agility, reduce provisioning time and free up resources in internal IT.
+By providing a service catalog, users can deploy the services they need quickly and simply. This will improve agility, reduce provisioning time and free up resources in internal IT.
 
 ### Service Basics
 
-But first some basics. Four items are required to make a service available to users from the CloudForms Self Service Portal:
+But first some basics. Four items are required to make a service available to users from the CloudForms self service portal:
 
 1. A Provisioning Dialog which presents the basic configuration options for a virtual machine or instance.
 1. A Service Dialog where you allow users to configure virtual machine or instance options.
 1. A Service Catalog which is used to group Services Catalog Items together.
-1. A Service Catalog Item (the actual Service) which joins a Service Dialog, a Provisioning Dialog and some additional meta data.
+1. A Service Catalog Item (the actual Service) which combines a Service Dialog, a Provisioning Dialog and some additional meta data in the Service Catalog.
 
-We can use role Based Access Control to make certain Service Catalog Items available to specific groups of users.
+We can also use Role Based Access Control to make certain Service Catalog Items available to specific groups of users.
 
 ## Virtual Machine Provisioning example
 
 The first example will guide you through the process of offering a Service Catalog Item to provision a simple virtual machine. This will include:
 
-* Create a service catalog: this will allow to organize services in a structured way
-* Design a service dialog: a form which will ask the user for the necessary input data
-* Publish a service catalog item: puts everything together and build the item which users can order
+- Design a Service Dialog: a form which will ask the user for the necessary input data
+- Create a Service Catalog: this will allow to organize services in a structured way
+- Publish a Service Catalog Item: puts everything together and build the item which users can order
+
+The previous chapter mentions a fourth object, the Provisioning Dialog. We do not have to create one, since there are examples shipped with the product, which does everything we need.
 
 The following chapters will guide you through the process step-by-step.
 
@@ -304,14 +305,14 @@ Follow these steps to design the service dialog:
 
     CloudForms allows us to design Service Dialogs comprised of many different types of Elements:
     
-    * Check box: allows to user to check or uncheck the element, often used to ask for additional optional data
-    * Date Control: allows the user to select a date from a calender widget. Often used for retirement or other date related options
-    * Date/Time Control: same as Date Control, but also allows to specify a time, for example used to specify an automated shutdown or if a change should be scheduled for later
-    * Drop Down List: allows the user to select one or multiple options from a list, for example to chose from a list of available networks, applications, cost centers and many more
-    * Radio Button: Similar to the check box, but only one of the options can be selected, for example the base OS version (RHEL 6 or RHEL 7, but never more than one)
-    * Tag Control: a special element which allows the user to chose from available tags. More about tagging later in this lab
-    * Text Area Box: allows the user to enter relatively large amounts of text (multiple lines), could be used for example to provide description information
-    * Text Box: allows the user for short amounts of text (one line), in this example we use this element to ask the user for a name of the virtual machine
+    - Check box: allows to user to check or uncheck the element, often used to ask for additional optional data
+    - Date Control: allows the user to select a date from a calender widget. Often used for retirement or other date related options
+    - Date/Time Control: same as Date Control, but also allows to specify a time, for example used to specify an automated shutdown or if a change should be scheduled for later
+    - Drop Down List: allows the user to select one or multiple options from a list, for example to chose from a list of available networks, applications, cost centers and many more
+    - Radio Button: Similar to the check box, but only one of the options can be selected, for example the base OS version (RHEL 6 or RHEL 7, but never more than one)
+    - Tag Control: a special element which allows the user to chose from available tags. More about tagging later in this lab
+    - Text Area Box: allows the user to enter relatively large amounts of text (multiple lines), could be used for example to provide description information
+    - Text Box: allows the user for short amounts of text (one line), in this example we use this element to ask the user for a name of the virtual machine
     
     We want the user to enter a text which then will be used to name the VM. This can be accomplished by selecting "Text Box" in the ***Type*** drop down list.
 
@@ -351,7 +352,7 @@ Follow these steps to design the service dialog:
 
     ***Note:*** If you're having trouble creating the Service Dialog, you can download it from [Github](https://raw.githubusercontent.com/cbolz/partner-conference-2017-labs/master/cloudforms-service-catalog-lab/service-dialog/simple-vm.yml) and import it. Follow the instructions on how to [import a service dialog](service-dialog-import.md) ONLY if you were unable to create the dialog.
 
-### Build a Virtual Machine Service Catalog
+### Build a Service Catalog
 
 The following steps will create a Service Catalog.
 
