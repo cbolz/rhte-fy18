@@ -13,11 +13,11 @@
     - [What's the value of having a service catalog?](#whats-the-value-of-having-a-service-catalog)
         - [Service Basics](#service-basics)
     - [Virtual Machine Provisioning example](#virtual-machine-provisioning-example)
-        - [Build a Service Dialog](#build-a-service-dialog)
-        - [Build a Service Catalog](#build-a-service-catalog)
+        - [Build a VM Provisioning Service Dialog](#build-a-vm-provisioning-service-dialog)
+        - [Build a VM Provisioning Service Catalog](#build-a-vm-provisioning-service-catalog)
         - [Build a Virtual Machine Service Catalog Item](#build-a-virtual-machine-service-catalog-item)
         - [Order the Simple Virtual Machine Service Catalog Item](#order-the-simple-virtual-machine-service-catalog-item)
-        - [Verify order](#verify-order)
+        - [Verify the order](#verify-the-order)
     - [HEAT Provisioning example](#heat-provisioning-example)
         - [Prepare the HEAT Template](#prepare-the-heat-template)
         - [Import the HEAT Template](#import-the-heat-template)
@@ -232,7 +232,7 @@ The previous chapter mentions a fourth object, the Provisioning Dialog. We do no
 
 The following chapters will guide you through the process step-by-step.
 
-### Build a Service Dialog
+### Build a VM Provisioning Service Dialog
 
 For this example we will create a Service Dialog which will ask the user for two parameters:
 
@@ -352,7 +352,7 @@ Follow these steps to design the service dialog:
 
     ***Note:*** If you're having trouble creating the Service Dialog, you can download it from [Github](https://raw.githubusercontent.com/cbolz/partner-conference-2017-labs/master/cloudforms-service-catalog-lab/service-dialog/simple-vm.yml) and import it. Follow the instructions on how to [import a service dialog](service-dialog-import.md) ONLY if you were unable to create the dialog.
 
-### Build a Service Catalog
+### Build a VM Provisioning Service Catalog
 
 The following steps will create a Service Catalog.
 
@@ -527,7 +527,7 @@ For sure you want to test the Service Catalog Item you just created!
 
     ***Note:*** Since we are using nested virtualization to run these labs, performance will be slow and it can take several minutes to complete the request (20-30 minutes).
 
-### Verify order
+### Verify the order
 
 In the requests queue you can click on ***Reload*** to see how CloudForms processes the order. If you click the button a few times, you should see the status is progressing.
 
@@ -535,7 +535,7 @@ We want to log into Red Hat Virtualization to see how the virtual machine is cre
 
 1. Open the Red Hat Virtualization Web UI in a new browser window or tab.
 
-        URL: https://rhevm-lu<number>.labs.rhepds.com
+        URL: https://rhevm-<GUID>.rhpds.opentlc.com
 
     ![rhv portal page](img/rhv-portal.png)
 
@@ -826,7 +826,7 @@ Let's log into OpenStack to see what's happening there.
 
 1. Log into OpenStack:
 
-    [https://osp-lu&lt;number&gt;.labs.rhepds.com](https://osp-lu&lt;number&gt;.labs.rhepds.com)
+    [https://osp-&lt;GUID&gt;.labs.rhepds.com](https://osp-&lt;GUID&gt;.labs.rhepds.com)
 
     ***Note:*** Make sure you use the HTTPS URL!
 
@@ -1668,7 +1668,7 @@ The user interface we used so far is often referenced as the "Operations UI" or 
 
 The Self Service user Interface can be accessed by appending the string "self_service" to the Appliance URL.
 
-[https://cf-lu&lt;number&gt;.labs.rhepds.com/ui/service](https://cf-lu&lt;number&gt;.labs.rhepds.com/ui/service)
+[https://cf-&lt;GUID&gt;.labs.rhepds.com/ui/service](https://cf-&lt;GUID&gt;.labs.rhepds.com/ui/service)
 
 You can login with the same credentials as before.
 
