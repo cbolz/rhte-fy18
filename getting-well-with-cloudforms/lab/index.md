@@ -59,19 +59,19 @@
     - [Creating and Assigning Policy Profile](#creating-and-assigning-policy-profile)
     - [Assign the policy profile](#assign-the-policy-profile)
     - [Testing the Policy Profile](#testing-the-policy-profile)
-- [Advanced labs](#advanced-labs)
-    - [Use the Self Service user Interface](#use-the-self-service-user-interface)
-    - [Use role Based Access Control to publish Service Catalog](#use-role-based-access-control-to-publish-service-catalog)
-    - [user groups](#user-groups)
-    - [roles](#roles)
+    - [Advanced labs](#advanced-labs)
+        - [Use the Self Service user Interface](#use-the-self-service-user-interface)
+        - [Use role Based Access Control to publish Service Catalog](#use-role-based-access-control-to-publish-service-catalog)
+        - [User Groups](#user-groups)
+        - [Roles](#roles)
         - [More details](#more-details)
-    - [Create a role](#create-a-role)
-    - [Create a new group](#create-a-new-group)
-    - [Create a new user](#create-a-new-user)
-    - [Test user Joe Doe](#test-user-joe-doe)
-    - [Grant access to certain Catalog Items](#grant-access-to-certain-catalog-items)
-    - [Test once more as Joe Doe](#test-once-more-as-joe-doe)
-- [Even more?](#even-more)
+        - [Create a Role](#create-a-role)
+        - [Create a new Group](#create-a-new-group)
+        - [Create a new User](#create-a-new-user)
+        - [Test user Joe Doe](#test-user-joe-doe)
+        - [Grant access to certain Catalog Items](#grant-access-to-certain-catalog-items)
+        - [Test once more as Joe Doe](#test-once-more-as-joe-doe)
+    - [Even more?](#even-more)
 
 <!-- /TOC -->
 
@@ -1505,88 +1505,88 @@ First we need to create a Catalog to store the service in, do this by clicking S
 
     ***Dialog name:*** vm_reconfig
 
-![vm-reconfig-service](img/vm-reconfig-service.png)
+    ![vm-reconfig-service](img/vm-reconfig-service.png)
 
 ## Creating Control Action
 
 1. Navigate to ***Control*** -> ***Explorer*** and click on the ***Actions*** accordion
 
-![control-explorer](img/control-explorer.png)
+    ![control-explorer](img/control-explorer.png)
 
-2. Click on the ***Actions*** accordion
+1. Click on the ***Actions*** accordion
 
-![actions](img/actions.png)
+    ![actions](img/actions.png)
 
-3. Select Configuration/Add a new Action
+1. Select Configuration/Add a new Action
 
-![add-new-action](img/add-new-action.png)
+    ![add-new-action](img/add-new-action.png)
 
-4. Fill out the form as follows
+1. Fill out the form as follows
 
-***Description*** Reset VM for CPU and Memory
+    ***Description:*** Reset VM for CPU and Memory
 
-***Action Type*** Run Ansible Playbook
+    ***Action Type:*** Run Ansible Playbook
 
-***Playbook Catalog Item*** VM reset for Memory and CPU
+    ***Playbook Catalog Item:*** VM reset for Memory and CPU
 
-***Inventory*** Localhost
+    ***Inventory:*** Localhost
 
-Leave the inventory on “Localhost” this is because the playbook that is run as part of the service you created is to be ran on the CloudForms appliance. The other options are
+    Leave the inventory on “Localhost” this is because the playbook that is run as part of the service you created is to be ran on the CloudForms appliance. The other options are
 
-- Run the playbook in the service on the machine that raises the event.
-- Comma Delimited list of Hosts.
+    - Run the playbook in the service on the machine that raises the event.
+    - Comma Delimited list of Hosts.
 
-![create-action-form](img/create-action-form.png)
+    ![create-action-form](img/create-action-form.png)
 
-5. Click Add
+1. Click Add
 
-Next we will create the Policy to call the action. The use case that will be demonstrated is when a VM changes its hardware settings, CloudForms will change it back.
+    Next we will create the Policy to call the action. The use case that will be demonstrated is when a VM changes its hardware settings, CloudForms will change it back.
 
 ## Create VM Control Policy
 
 1. Navigate to ***Policies** and then select ***VM Control Policies***
 
-![control-policies](img/control-policies.png)
+    ![control-policies](img/control-policies.png)
 
-2. Select Configuration/Add a New VM and Instance Control policy
+1. Select Configuration/Add a New VM and Instance Control policy
 
-![add-new-control-policy](img/add-new-control-policy.png)
+    ![add-new-control-policy](img/add-new-control-policy.png)
 
-3. In the form you just need to provide the ***Description*** 
+1. In the form you just need to provide the ***Description***
 
-***Description*** Reset VM for CPU and Memory
+    ***Description:*** Reset VM for CPU and Memory
 
-![add-new-control-policy-form](img/add-new-control-policy-form.png)
+    ![add-new-control-policy-form](img/add-new-control-policy-form.png)
 
 ## Setting Event Assignment
 
 1. Once added click Configuration/Edit this Events Assignment
 
-![edit-event-asignments](img/edit-event-asignments.png)
+    ![edit-event-asignments](img/edit-event-asignments.png)
 
-2. Scroll down and select “VM Settings Change” under the VM Configuration
+1. Scroll down and select “VM Settings Change” under the VM Configuration
 
-![vm-settings-change](img/vm-settings-change.png)
+    ![vm-settings-change](img/vm-settings-change.png)
 
-3. Click Save
+1. Click Save
 
 ## Setting Control Action on Event
 
 1. Click on the Event that is now save to the policy
 
-![event](img/event.png)
+    ![event](img/event.png)
 
-2. Select Configuration/Edit Actions for the Policy Event
+1. Select Configuration/Edit Actions for the Policy Event
 
-![edit-actions](img/edit-actions.png)
+    ![edit-actions](img/edit-actions.png)
 
-3. Scroll the Available Actions For Conditions that are TRUE and move the Action you just created to the Selected Actions
+1. Scroll the Available Actions For Conditions that are TRUE and move the Action you just created to the Selected Actions
 
-![actions-for-conditions](img/actions-for-conditions.png)
+    ![actions-for-conditions](img/actions-for-conditions.png)
 
-4. Click Save
+1. Click Save
 
-The policy will react to events that are “VM Settings Change”, upon the event detected it will run the action “Reconfigure VMware VM for CPU and Memory” that is in turn a Service that is a Ansible Playbook.
+    The policy will react to events that are “VM Settings Change”, upon the event detected it will run the action “Reconfigure VMware VM for CPU and Memory” that is in turn a Service that is a Ansible Playbook.
 
 ## Creating and Assigning Policy Profile
 
@@ -1594,75 +1594,75 @@ For a policy to work, it needs a policy profile to be attached to. The policy pr
 
 1. Navigate to ***Control*** -> ***Explorer*** -> ***Policy Profiles***
 
-![navigate-policy-profiles](img/navigate-policy-profiles.png)
+    ![navigate-policy-profiles](img/navigate-policy-profiles.png)
 
-2. Click Configuration/Add New Policy Profile
+1. Click Configuration/Add New Policy Profile
 
-![add-new-policy-profile](img/add-new-policy-profile.png)
+    ![add-new-policy-profile](img/add-new-policy-profile.png)
 
-3. Provide a ***Description***
+1. Provide a ***Description***
 
-***Description*** Desired State Policies
+    ***Description:*** Desired State Policies
 
-4. Move the “Reset VM for CPU and Memory” policy from available to Profile Policies list.
+1. Move the “Reset VM for CPU and Memory” policy from available to Profile Policies list.
 
-![move-policy](img/move-policy.png)
+    ![move-policy](img/move-policy.png)
 
-5. Click Save
+1. Click Save
 
 ## Assign the policy profile
 
 1. Navigate to ***Compute*** -> ***Infrastructure*** -> ***Virtual Machines***
 
-![navigate-compute-infrastructure-vms](img/navigate-compute-infrastructure-vms.png)
+    ![navigate-compute-infrastructure-vms](img/navigate-compute-infrastructure-vms.png)
 
-2. Select a Power Off VM
+1. Select a Power Off VM
 
-3. Go to ***Policy*** -> ***Manage Policies***
+1. Go to ***Policy*** -> ***Manage Policies***
 
-![assign-policy-vm](img/assign-policy-vm.png)
+    ![assign-policy-vm](img/assign-policy-vm.png)
 
-4. Select the “Desired State Policy Profile”
+1. Select the “Desired State Policy Profile”
 
-![assign-policy-vm2](img/assign-policy-vm2.png)
+    ![assign-policy-vm2](img/assign-policy-vm2.png)
 
-5. Click Save
+1. Click Save
 
-This has assigned the Desired State Policy Profile to the individual VM. When the VM is configured for CPU or Memory, CloudForms will reset it back to 1CPU and 1GB memory.
+    This has assigned the Desired State Policy Profile to the individual VM. When the VM is configured for CPU or Memory, CloudForms will reset it back to 1CPU and 1GB memory.
 
 ## Testing the Policy Profile
 
- We will see the output in CloudForms in the form of a service in my services as well as the actual VM inventory will change. To see more real time, it's advised during testing to open the policy.log file on the CloudForms appliance. This shows when events are caught by CloudForms and confirms the policy matches. 
+We will see the output in CloudForms in the form of a service in my services as well as the actual VM inventory will change. To see more real time, it's advised during testing to open the policy.log file on the CloudForms appliance. This shows when events are caught by CloudForms and confirms the policy matches. 
 
 Start by going to vSphere Web Client and selecting the VM that you identified for your service and policy earlier.
 
-1. Go to the vCenter console, pick the VM you assigned the Policy and modify the CPU and Memory values to
+1. Go to the vCenter console, pick the VM you assigned the Policy and modify the CPU and Memory values to 
 
-***CPU*** 3
+    ***CPU:*** 3
 
-***Memory*** 4096 MB
+    ***Memory:*** 4096 MB
 
-![vmware-edit-settings](img/vmware-edit-settings.png)
+    ![vmware-edit-settings](img/vmware-edit-settings.png)
 
-You can see the vSphere Web Client task running to change the CPU and Memory.
+    You can see the vSphere Web Client task running to change the CPU and Memory.
 
-2. Go back to the CloudForms console and navigate to ***Services*** -> ***Requests***
+1. Go back to the CloudForms console and navigate to ***Services*** -> ***Requests***
 
-![navigate-to-services-requests](img/navigate-to-services-requests.png)
+    ![navigate-to-services-requests](img/navigate-to-services-requests.png)
 
-3. Wait until your request (service) is finished
+1. Wait until your request (service) is finished
 
-![policy-service](img/policy-service.png)
+    ![policy-service](img/policy-service.png)
 
-4. Go back to the vCenter console and verify that is has 1 CPU and 1 GB of RAM
+1. Go back to the vCenter console and verify that is has 1 CPU and 1 GB of RAM
 
-![verify-vmware-vm](img/verify-vmware-vm.png)
+    ![verify-vmware-vm](img/verify-vmware-vm.png)
 
-# Advanced labs
+## Advanced labs
 
 If you were able to complete all the steps and still have some time left, here are a couple of things you can do to get more familiar with CloudForms.
 
-## Use the Self Service user Interface
+### Use the Self Service user Interface
 
 The user interface we used so far is often referenced as the "Operations UI" or the "Classic UI". A new, more modern, Self Service user Interface is also available and receives improvements with every release.
 
@@ -1672,7 +1672,7 @@ The Self Service user Interface can be accessed by appending the string "self_se
 
 You can login with the same credentials as before.
 
-## Use role Based Access Control to publish Service Catalog
+### Use role Based Access Control to publish Service Catalog
 
 So far we have created Catalog Items which are visible to any logged in user. In most Enterprise environments, specific Service Catalog items should only be accessible for certain user groups.
 
@@ -1680,11 +1680,11 @@ CloudForms offers a very granular system for role Based Access Control (RBAC). T
 
 In this advanced lab we want only specific Catalog Items to be available for certain user groups. CloudForms is using tags to identify objects. For example, if a Service Catalog Item is tagged as "Department Engineering" only users which are in a group which is also tagged as "Department Engineering" will see and be able to order this Catalog Item.
 
-## user groups
+### User Groups
 
 A user is always member of at least one user group. The group defines the visibility granted to all member users. For example, members of the group "Department Engineering" can see all objects tagged with this tag.
 
-## roles
+### Roles
 
 The role defines which actions are allowed to groups associated to this role. For example the role can grant the privilege to start or stop Virtual Machines, manage Service Catalog items, or define and use reports.
 
@@ -1692,9 +1692,9 @@ Since roles can be associated to multiple groups, they can be reused. A user in 
 
 ### More details
 
-If you want to learn more about CloudForms' role Based Access Control, you can read the [official product documentation](https://access.redhat.com/documentation/en/red-hat-cloudforms/). The chapter [access control](https://access.redhat.com/documentation/en-us/red_hat_cloudforms/4.5/html/general_configuration/configuration#access-control) in the [General Configuration](https://access.redhat.com/documentation/en-us/red_hat_cloudforms/4.5/html/general_configuration/) Guide also provides more background information. Last but not least, there is a good summary about [Using Tags for Access Control](http://cloudformsblog.redhat.com/2016/10/13/using-tags-for-access-control/) on the [official CloudForms Blog](http://cloudformsblog.redhat.com).
+If you want to learn more about CloudForms' Role Based Access Control, you can read the [official product documentation](https://access.redhat.com/documentation/en/red-hat-cloudforms/). The chapter [access control](https://access.redhat.com/documentation/en-us/red_hat_cloudforms/4.5/html/general_configuration/configuration#access-control) in the [General Configuration](https://access.redhat.com/documentation/en-us/red_hat_cloudforms/4.5/html/general_configuration/) Guide also provides more background information. Last but not least, there is a good summary about [Using Tags for Access Control](http://cloudformsblog.redhat.com/2016/10/13/using-tags-for-access-control/) on the [official CloudForms Blog](http://cloudformsblog.redhat.com).
 
-## Create a role
+### Create a Role
 
 For this lab, we first want to create a role which we want to use for testing.
 
@@ -1734,7 +1734,7 @@ For this lab, we first want to create a role which we want to use for testing.
 
     ![add a new group](img/add-new-group.png)
 
-## Create a new group
+### Create a new Group
 
 Next we want to create a group and assign it to the role we just created.
 
@@ -1758,7 +1758,7 @@ Next we want to create a group and assign it to the role we just created.
 
 1. Click on ***Add*** to create this new group
 
-## Create a new user
+### Create a new User
 
 Finally we want to create a user which is a member of the group we just created.
 
@@ -1786,7 +1786,7 @@ Finally we want to create a user which is a member of the group we just created.
 
     Click on ***Add*** to create the user
 
-## Test user Joe Doe
+### Test user Joe Doe
 
 So far we have not assigned any objects to the new group, but we have granted very specific rights to members of that group.
 
@@ -1818,7 +1818,7 @@ Let's see what happens if we log into CloudForms as "Joe Doe".
 
     ![logout](img/logout.png)
 
-## Grant access to certain Catalog Items
+### Grant access to certain Catalog Items
 
 We want to make one Catalog Item available to all users which are members of the "Self Service Engineering" group.
 
@@ -1846,7 +1846,7 @@ We want to make one Catalog Item available to all users which are members of the
 
 1. Click ***Save*** to commit the changes
 
-## Test once more as Joe Doe
+### Test once more as Joe Doe
 
 We want to do another test and see if the user Joe Doe can now see and other the Catalog Item.
 
@@ -1868,7 +1868,7 @@ We want to do another test and see if the user Joe Doe can now see and other the
 
 1. If you want, you can order the Service Catalog Item and should see that it will be deployed perfectly.
 
-# Even more?
+## Even more?
 
 If you're already done and still have some time left, here are some ideas for advanced labs:
 
