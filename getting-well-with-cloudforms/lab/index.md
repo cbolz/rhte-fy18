@@ -9,16 +9,16 @@
         - [OpenStack Provider status](#openstack-provider-status)
         - [Red Hat Virtualization Provider status](#red-hat-virtualization-provider-status)
         - [vCenter Provider status](#vcenter-provider-status)
-- [Build a Service Catalog with CloudForms](#build-a-service-catalog-with-cloudforms)
-    - [What's the value of having a service catalog?](#whats-the-value-of-having-a-service-catalog)
+    - [Build a Service Catalog with CloudForms](#build-a-service-catalog-with-cloudforms)
+        - [What's the value of having a service catalog?](#whats-the-value-of-having-a-service-catalog)
         - [Service Basics](#service-basics)
-    - [Virtual Machine Provisioning example](#virtual-machine-provisioning-example)
+        - [Virtual Machine Provisioning example](#virtual-machine-provisioning-example)
         - [Build a VM Provisioning Service Dialog](#build-a-vm-provisioning-service-dialog)
         - [Build a VM Provisioning Service Catalog](#build-a-vm-provisioning-service-catalog)
         - [Build a Virtual Machine Service Catalog Item](#build-a-virtual-machine-service-catalog-item)
         - [Order the Simple Virtual Machine Service Catalog Item](#order-the-simple-virtual-machine-service-catalog-item)
         - [Verify the order](#verify-the-order)
-    - [HEAT Provisioning example](#heat-provisioning-example)
+        - [HEAT Provisioning example](#heat-provisioning-example)
         - [Prepare the HEAT Template](#prepare-the-heat-template)
         - [Import the HEAT Template](#import-the-heat-template)
         - [Create a Service Dialog from a HEAT template](#create-a-service-dialog-from-a-heat-template)
@@ -27,38 +27,38 @@
         - [Build a HEAT Service Catalog Item](#build-a-heat-service-catalog-item)
         - [Order the HEAT Wordpress Catalog Item](#order-the-heat-wordpress-catalog-item)
         - [Verify provisioning in OpenStack](#verify-provisioning-in-openstack)
-- [CloudForms 4.5 with Ansible batteries included](#cloudforms-45-with-ansible-batteries-included)
-    - [Introduction to Ansible](#introduction-to-ansible)
+    - [CloudForms 4.5 with Ansible batteries included](#cloudforms-45-with-ansible-batteries-included)
+        - [Introduction to Ansible](#introduction-to-ansible)
         - [Make sure embedded Ansible role is enabled and running](#make-sure-embedded-ansible-role-is-enabled-and-running)
-    - [Add a Git repository of Ansible Playbooks](#add-a-git-repository-of-ansible-playbooks)
-    - [Add vCenter credentials](#add-vcenter-credentials)
-    - [Verify repository sync](#verify-repository-sync)
-    - [Install pysphere](#install-pysphere)
-    - [Build a Service Catalog to create and delete users](#build-a-service-catalog-to-create-and-delete-users)
+        - [Add a Git repository of Ansible Playbooks](#add-a-git-repository-of-ansible-playbooks)
+        - [Add vCenter credentials](#add-vcenter-credentials)
+        - [Verify repository sync](#verify-repository-sync)
+        - [Install pysphere](#install-pysphere)
+        - [Build a Service Catalog to create and delete users](#build-a-service-catalog-to-create-and-delete-users)
         - [Create a Service Catalog for Ansible Playbooks](#create-a-service-catalog-for-ansible-playbooks)
         - [Create a Service Catalog Item for the Playbook](#create-a-service-catalog-item-for-the-playbook)
-    - [Order the "create user" Service Catalog Item](#order-the-create-user-service-catalog-item)
+        - [Order the "create user" Service Catalog Item](#order-the-create-user-service-catalog-item)
         - [Monitor create user Playbook execution](#monitor-create-user-playbook-execution)
         - [Verify Playbook results](#verify-playbook-results)
-    - [Build a Service Catalog to deploy Virtual Machines](#build-a-service-catalog-to-deploy-virtual-machines)
-    - [Order the Virtual Machine Provisioning Service Catalog Item](#order-the-virtual-machine-provisioning-service-catalog-item)
+        - [Build a Service Catalog to deploy Virtual Machines](#build-a-service-catalog-to-deploy-virtual-machines)
+        - [Order the Virtual Machine Provisioning Service Catalog Item](#order-the-virtual-machine-provisioning-service-catalog-item)
         - [Monitor VM provisioning Playbook execution](#monitor-vm-provisioning-playbook-execution)
-    - [Extend CloudForms builtin Capabilities](#extend-cloudforms-builtin-capabilities)
+        - [Extend CloudForms builtin Capabilities](#extend-cloudforms-builtin-capabilities)
         - [Add a Git repository for Automate](#add-a-git-repository-for-automate)
         - [Verify Automate import](#verify-automate-import)
-    - [Optimize the Dialog](#optimize-the-dialog)
+        - [Optimize the Dialog](#optimize-the-dialog)
         - [Update the Service Catalog Item](#update-the-service-catalog-item)
         - [Test the new Service Dialog](#test-the-new-service-dialog)
-- [Policies and Ansible](#policies-and-ansible)
-    - [Creating the Service](#creating-the-service)
+    - [Policies and Ansible](#policies-and-ansible)
+        - [Creating the Service](#creating-the-service)
         - [Create a Service Catalog Item for the Playbook](#create-a-service-catalog-item-for-the-playbook-1)
-    - [Creating Control Action](#creating-control-action)
-    - [Create VM Control Policy](#create-vm-control-policy)
-    - [Setting Event Assignment](#setting-event-assignment)
-    - [Setting Control Action on Event](#setting-control-action-on-event)
-    - [Creating and Assigning Policy Profile](#creating-and-assigning-policy-profile)
-    - [Assign the policy profile](#assign-the-policy-profile)
-    - [Testing the Policy Profile](#testing-the-policy-profile)
+        - [Creating Control Action](#creating-control-action)
+        - [Create VM Control Policy](#create-vm-control-policy)
+        - [Setting Event Assignment](#setting-event-assignment)
+        - [Setting Control Action on Event](#setting-control-action-on-event)
+        - [Creating and Assigning Policy Profile](#creating-and-assigning-policy-profile)
+        - [Assign the policy profile](#assign-the-policy-profile)
+        - [Testing the Policy Profile](#testing-the-policy-profile)
     - [Advanced labs](#advanced-labs)
         - [Use the Self Service user Interface](#use-the-self-service-user-interface)
         - [Use role Based Access Control to publish Service Catalog](#use-role-based-access-control-to-publish-service-catalog)
@@ -199,11 +199,11 @@ This will validate the credentials are correct, and it will also restart the pro
 
 1. Now you're ready to go!
 
-# Build a Service Catalog with CloudForms
+## Build a Service Catalog with CloudForms
 
 This lab will guide you through the process of creating a service catalog in CloudForms.
 
-## What's the value of having a service catalog?
+### What's the value of having a service catalog?
 
 One of the features a Cloud Management Platform provides, is a self service user interface. Here users can order, manage and retire services. Services are categorized in catalogs, where they can be organized and easily consumed.
 
@@ -220,7 +220,7 @@ But first some basics. Four items are required to make a service available to us
 
 We can also use Role Based Access Control to make certain Service Catalog Items available to specific groups of users.
 
-## Virtual Machine Provisioning example
+### Virtual Machine Provisioning example
 
 The first example will guide you through the process of offering a Service Catalog Item to provision a simple virtual machine. This will include:
 
@@ -565,14 +565,14 @@ We want to log into Red Hat Virtualization to see how the virtual machine is cre
 
 1. This concludes this first part of the lab
 
-## HEAT Provisioning example
+### HEAT Provisioning example
 
 In the first part of the lab you have learned:
 
-* how to design a Service Dialog
-* how to create a Service Catalog
-* put everything together with a Service Catalog Item
-* order from the Service Catalog
+- how to design a Service Dialog
+- how to create a Service Catalog
+- put everything together with a Service Catalog Item
+- order from the Service Catalog
 
 In the second part of the lab, we want to use HEAT to create a new instance and to provision an application inside the instance. We are using the probably most popular example: [Wordpress](www.wordpress.org). The HEAT template we use, can be found in the [OpenStack Git Repository](https://github.com/openstack/heat-templates/blob/master/hot/F20/WordPress_Native.yaml).
 
@@ -589,7 +589,6 @@ Before we can import the template into CloudForms, we need to download it or hav
     [https://github.com/cbolz/partner-conference-2017-labs/blob/master/cloudforms-service-catalog-lab/HEAT/WordPress_Native.yaml](https://github.com/cbolz/partner-conference-2017-labs/blob/master/cloudforms-service-catalog-lab/HEAT/WordPress_Native.yaml)
 
 1. Make sure to open the file in "RAW" mode or use this link:
-
     [https://raw.githubusercontent.com/cbolz/partner-conference-2017-labs/master/cloudforms-service-catalog-lab/HEAT/WordPress_Native.yaml](https://raw.githubusercontent.com/cbolz/partner-conference-2017-labs/master/cloudforms-service-catalog-lab/HEAT/WordPress_Native.yaml)
 
 1. Download the HEAT Template or open it in a separate browser window so you can copy and paste it into the CloudForms Web UI
@@ -844,7 +843,7 @@ Let's log into OpenStack to see what's happening there.
 
     ![navigate to orchestration stacks](img/osp-navigate-to-stacks.png)
 
-1. You should see your stack. It might already be completed or still in progress.If you can't see it yet, wait a minute and reload the page.
+1. You should see your stack. It might already be completed or still in progress. If you can't see it yet, wait a minute and reload the page.
 
     ![stack completed](img/osp-stack-completed.png)
 
@@ -854,11 +853,11 @@ Let's log into OpenStack to see what's happening there.
 
 This concludes this section of the lab.
 
-# CloudForms 4.5 with Ansible batteries included
+## CloudForms 4.5 with Ansible batteries included
 
 This lab will guide you through the process of using the new embedded Ansible features of CloudForms 4.5.
 
-## Introduction to Ansible
+### Introduction to Ansible
 
 Today, every business is a digital business. Technology is your innovation engine, and delivering your applications faster helps you win. Historically, that required a lot of manual effort and complicated coordination. But today, there is Ansible - the simple, yet powerful IT automation engine that thousands of companies are using to drive complexity out of their environments and accelerate DevOps initiatives.
 
@@ -886,7 +885,7 @@ Before we start,  we want to make sure the embedded Ansible role is enabled and 
 
     ![ansible worker started](img/ansible-worker-started.png)
 
-## Add a Git repository of Ansible Playbooks
+### Add a Git repository of Ansible Playbooks
 
 To be able to run Ansible Playbooks, they have to become available in CloudForms. Custom git repositories can be used as well as Github, Gitlab or others. Other repository types like Subversion or Mercurial are planned for later versions.
 
@@ -912,7 +911,7 @@ To be able to run Ansible Playbooks, they have to become available in CloudForms
 
 ***Note:*** It takes a few seconds for the action to complete. A pop up notification will inform you after the task was completed.
 
-## Add vCenter credentials
+### Add vCenter credentials
 
 For one of the following labs, the Playbook needs to be able to log into the vCenter provider. For this to work, we need to store the necessary credentials.
 
@@ -948,7 +947,7 @@ And click in ***All Other Tasks***
 
 ![All-Other-Taks](img/all-other-tasks.png)
 
-## Verify repository sync
+### Verify repository sync
 
 In the meantime the repository you created should have completed the initial synchronization. Let's check all Playbooks have been successfully imported and are available for us to use.
 
@@ -962,7 +961,7 @@ In the meantime the repository you created should have completed the initial syn
 
 If there are no Playbooks listed, check the repository was configured correctly. Click the notification icon on the top right (the little bell icon) and check if there are any errors listed. The initial import can also take a minute or two, did you wait long enough?
 
-## Install pysphere
+### Install pysphere
 
 In order to use the Ansible VMware modules you need to install a python library call "pysphere". You need to ssh to you student workstation and jump to the CloudForms server.
 
@@ -970,7 +969,7 @@ In order to use the Ansible VMware modules you need to install a python library 
 $ sudo easy_install -U pysphere
 `
 
-## Build a Service Catalog to create and delete users
+### Build a Service Catalog to create and delete users
 
 In this lab we will use an Ansible Playbook to create a local user in CloudForms. This example will also demonstrate how we can define a retirement process as well. In CloudForms' understanding of complete life cycle management, every object has a provisioning and a retirement workflow.
 
@@ -1056,7 +1055,7 @@ In this lab we will use an Ansible Playbook to create a local user in CloudForms
 
 1. Click on ***Add*** to save the catalog item
 
-## Order the "create user" Service Catalog Item
+### Order the "create user" Service Catalog Item
 
 To make sure everything works as expected, we want to test the Catalog Item we just created.
 
@@ -1132,7 +1131,7 @@ To make sure the user was really created, follow these steps.
 
     ![logout](img/logout.png)
 
-## Build a Service Catalog to deploy Virtual Machines
+### Build a Service Catalog to deploy Virtual Machines
 
 In this second part of the lab we want to use an Ansible Playbook to deploy a Virtual Machine in VMware vCenter. The necessary Playbook should already be in your repository.
 
@@ -1230,7 +1229,7 @@ In this second part of the lab we want to use an Ansible Playbook to deploy a Vi
 
     ![catalog item was created](img/vm-prov-catalog-item-created.png)
 
-## Order the Virtual Machine Provisioning Service Catalog Item
+### Order the Virtual Machine Provisioning Service Catalog Item
 
 Once more, we want to test the result and see everything works as expected.
 
@@ -1282,7 +1281,7 @@ When executing an Ansible Playbook with the embedded role in CloudForms, a "Serv
 
     ![reload icon](img/reload-icon.png)
 
-## Extend CloudForms builtin Capabilities
+### Extend CloudForms builtin Capabilities
 
 In this lab you have so far learned how to use Ansible Playbooks to orchestrate and execute configuration actions. CloudForms is internally using a powerful and extensible framework that defines what happens "under the hood". This feature is called "Automate". "Automate" allows us to understand how things are done and even more interestingly, it allows us to add features which are not coming out of the box.
 
@@ -1335,7 +1334,7 @@ We want to make sure the Automate Code was properly imported.
 
 This concludes the preparation for the next part of the lab.
 
-## Optimize the Dialog
+### Optimize the Dialog
 
 The Service Dialog we created so far, is not ideal for most use cases. We want users to focus on getting their service as quickly and easily as possible. An ideal Service Dialog only asks the absolutely necessary questions. With this in mind, we can optimize the automatically created Service Dialog created in the previous part of the lab.
 
@@ -1443,11 +1442,11 @@ We want to see how the resulting Service Catalog Item looks like.
 
 1. If you want, you can go ahead and submit the order
 
-# Policies and Ansible
+## Policies and Ansible
 
 In this lab we will cover how to create an action in CoudForms that executes an Ansible Playbook. 
 
-## Creating the Service
+### Creating the Service
 
 Control Policies drive Control Actions. Ansible Playbooks can now be executed as a control action, this is done by the control action calling a service. Therefore we need to create a service for the action to call.
 
@@ -1507,7 +1506,7 @@ First we need to create a Catalog to store the service in, do this by clicking S
 
     ![vm-reconfig-service](img/vm-reconfig-service.png)
 
-## Creating Control Action
+### Creating Control Action
 
 1. Navigate to ***Control*** -> ***Explorer*** and click on the ***Actions*** accordion
 
@@ -1542,7 +1541,7 @@ First we need to create a Catalog to store the service in, do this by clicking S
 
     Next we will create the Policy to call the action. The use case that will be demonstrated is when a VM changes its hardware settings, CloudForms will change it back.
 
-## Create VM Control Policy
+### Create VM Control Policy
 
 1. Navigate to ***Policies** and then select ***VM Control Policies***
 
@@ -1558,7 +1557,7 @@ First we need to create a Catalog to store the service in, do this by clicking S
 
     ![add-new-control-policy-form](img/add-new-control-policy-form.png)
 
-## Setting Event Assignment
+### Setting Event Assignment
 
 1. Once added click Configuration/Edit this Events Assignment
 
@@ -1570,7 +1569,7 @@ First we need to create a Catalog to store the service in, do this by clicking S
 
 1. Click Save
 
-## Setting Control Action on Event
+### Setting Control Action on Event
 
 1. Click on the Event that is now save to the policy
 
@@ -1588,7 +1587,7 @@ First we need to create a Catalog to store the service in, do this by clicking S
 
     The policy will react to events that are “VM Settings Change”, upon the event detected it will run the action “Reconfigure VMware VM for CPU and Memory” that is in turn a Service that is a Ansible Playbook.
 
-## Creating and Assigning Policy Profile
+### Creating and Assigning Policy Profile
 
 For a policy to work, it needs a policy profile to be attached to. The policy profile also needs to be assigned to an object in CloudForms.
 
@@ -1610,7 +1609,7 @@ For a policy to work, it needs a policy profile to be attached to. The policy pr
 
 1. Click Save
 
-## Assign the policy profile
+### Assign the policy profile
 
 1. Navigate to ***Compute*** -> ***Infrastructure*** -> ***Virtual Machines***
 
@@ -1630,7 +1629,7 @@ For a policy to work, it needs a policy profile to be attached to. The policy pr
 
     This has assigned the Desired State Policy Profile to the individual VM. When the VM is configured for CPU or Memory, CloudForms will reset it back to 1CPU and 1GB memory.
 
-## Testing the Policy Profile
+### Testing the Policy Profile
 
 We will see the output in CloudForms in the form of a service in my services as well as the actual VM inventory will change. To see more real time, it's advised during testing to open the policy.log file on the CloudForms appliance. This shows when events are caught by CloudForms and confirms the policy matches. 
 
