@@ -297,7 +297,7 @@ Follow these steps to design the service dialog:
 
     The name will be used for the internal variable of the provisioning workflow:
 
-    ***Name:*** vm_name
+    ***Name:*** option_0_vm_name
 
     The description is some text which will be shown if the mouse pointer is hovering over this element. It can be used to provide additional information to the user to fill out this field:
 
@@ -808,7 +808,7 @@ For sure you want to test the Catalog Item you just created!
 
     ***Stack Name:*** wordpress001
 
-    For all other fields the provided default values can be accepted. Note that the image name is "rhel7.2" as you specified in your dialog.
+    For all other fields the provided default values can be accepted. Note that the image name is "rhel7.3" as you specified in your dialog.
 
     ![order HEAT template](img/order-wordpress-heat-template.png)
 
@@ -1365,7 +1365,7 @@ The Service Dialog we created so far, is not ideal for most use cases. We want u
 
     ***Label:*** provision-vm-vcenter-v2
 
-1. The elements in the "Options" box will always be left to the default values for our Service Catalog Item to work. Since our users are never going to change any of the field in the "Options" bix, we can simply delete the entire box.
+1. The elements in the "Options" box will always be left to the default values for our Service Catalog Item to work. Since our users are never going to change any of the field in the "Options" box, we can simply delete the entire box.
 
     Click on the Box "Options" and then on the little trash bin icon to delete it and all its child elements.
 
@@ -1668,7 +1668,7 @@ The user interface we used so far is often referenced as the "Operations UI" or 
 
 The Self Service user Interface can be accessed by appending the string "self_service" to the Appliance URL.
 
-[https://cf-&lt;GUID&gt;.labs.rhepds.com/ui/service](https://cf-&lt;GUID&gt;.labs.rhepds.com/ui/service)
+[https://cf-&lt;GUID&gt;.labs.rhepds.com/self_service](https://cf-&lt;GUID&gt;.labs.rhepds.com/self_service)
 
 You can login with the same credentials as before.
 
@@ -1877,6 +1877,6 @@ If you're already done and still have some time left, here are some ideas for ad
 - retire the virtual machine Service you ordered earlier, check what happens during retirement with the virtual machine (Is it shutdown? Deleted? Is there still a representation in the CloudForms Web UI?)
 - make the second Catalog Item available for Joe Doe as well
 - improve the Service Dialog and make the VM Name a mandatory field (right now, it's optional and can be left empty)
-- grant Joe Doe more privileges (for example, it would be nice if he could start and stop hie virtual machines)
+- grant Joe Doe more privileges (for example, it would be nice if he could start and stop his virtual machines)
 - upload items to make the Service Catalog more appealing
 - use the new Self Service user Interface by trying the "/self_service" URL on your Appliance
