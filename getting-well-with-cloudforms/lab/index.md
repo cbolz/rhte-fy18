@@ -105,7 +105,7 @@ The lab is comprised of a number of systems:
 
         URL: https://cf-<GUID>.rhpds.opentlc.com
 
-        User: demo / password: r3dh4t1!
+        User: admin / password: r3dh4t1!
 
 - Red Hat Enterprise Virtualization Manager
 
