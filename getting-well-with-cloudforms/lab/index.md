@@ -105,7 +105,7 @@ The lab is comprised of a number of systems:
 
         URL: https://cf-<GUID>.rhpds.opentlc.com
 
-        User: demo / password: r3dh4t1!
+        User: admin / password: r3dh4t1!
 
 - Red Hat Enterprise Virtualization Manager
 
@@ -141,7 +141,7 @@ Let's first check the OpenStack Provider:
 
     ![navigate to cloud providers](img/navigate-to-compute-clouds-providers.png)
 
-1. You should see a tile icon labeled "OpenStack". Click on it.
+1. You should see a tile icon labeled "RHEV". Click on it.
 
     ![OpenStack provider tile icon](img/openstack-provider-tile.png)
 
@@ -807,7 +807,7 @@ For sure you want to test the Catalog Item you just created!
 
     ***Stack Name:*** wordpress001
 
-    For all other fields the provided default values can be accepted. Note that the image name is "rhel7.3" as you specified in your dialog.
+    For all other fields the provided default values can be accepted. Note that the image name is "rhel7.2" as you specified in your dialog.
 
     ![order HEAT template](img/order-wordpress-heat-template.png)
 
@@ -885,11 +885,15 @@ Before we start,  we want to make sure the embedded Ansible role is enabled and 
 
     ![ansible worker started](img/ansible-worker-started.png)
 
+
+Logoff as demouser and login back as Admin
+
+
 ### Add a Git repository of Ansible Playbooks
 
 To be able to run Ansible Playbooks, they have to become available in CloudForms. Custom git repositories can be used as well as Github, Gitlab or others. Other repository types like Subversion or Mercurial are planned for later versions.
 
-1. Navigate to Automation, Automate, Repositories.
+1. Navigate to Automation, Ansible, Repositories.
 
     ![navigate to Ansible repositories](img/navigate-to-ansible-repo.png)
 
