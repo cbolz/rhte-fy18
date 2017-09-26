@@ -885,6 +885,10 @@ Before we start,  we want to make sure the embedded Ansible role is enabled and 
 
     ![ansible worker started](img/ansible-worker-started.png)
 
+
+Logoff as demouser and login back as Admin
+
+
 ### Add a Git repository of Ansible Playbooks
 
 To be able to run Ansible Playbooks, they have to become available in CloudForms. Custom git repositories can be used as well as Github, Gitlab or others. Other repository types like Subversion or Mercurial are planned for later versions.
