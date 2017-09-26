@@ -679,7 +679,7 @@ The Service Dialog was automatically created. We want to verify it was created p
 
 1. Change the value of the field "Default Value"
 
-    ***Default Value:*** rhel7.2
+    ***Default Value:*** rhel7.3
 
     ![change the image name](img/service-dialog-heat-image-name.png)
 
