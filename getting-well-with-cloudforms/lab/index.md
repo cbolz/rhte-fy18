@@ -825,7 +825,7 @@ Let's log into OpenStack to see what's happening there.
 
 1. Log into OpenStack:
 
-    [https://osp-&lt;GUID&gt;.labs.rhepds.com](https://osp-&lt;GUID&gt;.labs.rhepds.com)
+    [https://osp-&lt;GUID&gt;.https://osp-<GUID>.rhpds.opentlc.com](https://osp-&lt;GUID&gt;.https://osp-<GUID>.rhpds.opentlc.com)
 
     ***Note:*** Make sure you use the HTTPS URL!
 
