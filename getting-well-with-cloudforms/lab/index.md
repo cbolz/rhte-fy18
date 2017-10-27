@@ -81,7 +81,7 @@
 
 ### Access the lab environment
 
-Navigate to the RHPDS Portal and order the "EMEA RHTE CF Lab".
+Navigate to the RHPDS Portal and order the "Getting Well With CloudForms" in the catalog "Cloud Infrastructure Demos".
 
 [https://rhpds.redhat.com](https://rhpds.redhat.com)
 
